@@ -1,0 +1,59 @@
+<!-- extends表明此页面继承自 base.html 文件 -->
+{% extends "base.html" %}
+{% load static %}
+
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+    文章详情
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+
+<!-- 文章详情 -->
+<div class="container">
+    <div class="row">
+        <!-- 标题及作者 -->
+        <h1 class="col-12 mt-4 mb-4">{{ article.title }}</h1>
+        <div class="col-12 alert alert-success">创作时间：<p>{{ article.edittime }}</p></div>
+        <div class="col-12 alert alert-success">作者：<p>{{ article.author }}</p>
+            <br>
+         · <a href="{% url "stock:delete" article.id %}">删除文章</a>
+        </div>
+        <!-- 文章正文 -->
+        <div class="col-12">
+            <p>{{ article.content }}</p>
+
+
+        </div>
+        <div class="row mt-2">
+    {% for article in articles %}
+        <!-- 标题图 -->
+        {% if article.img %}
+
+            hhhhh
+            <div class="col-3">
+                <img src="{{ article.img.url }}"
+                     alt="img"
+                     style="max-width:100%; border-radius: 20px"
+                >
+            </div>
+        {% endif %}
+
+        <div class="col">
+            <!-- 栏目 -->
+            ...
+
+            <!-- 标签 -->
+            ...
+
+            ...
+
+        <hr style="width: 100%;"/>
+    {% endfor %}
+</div>
+
+
+</div>
+
+{% endblock content %}
